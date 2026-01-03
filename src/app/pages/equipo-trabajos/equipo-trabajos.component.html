@@ -1,0 +1,76 @@
+<!-- Equipo -->
+<section id="equipo" class="bg-light py-5" style="margin-top: 70px;">
+  <div class="container">
+    <h2 class="text-center mb-5">Equipo con el que Contamos</h2>
+    <div class="row align-items-center">
+      <div class="col-md-6">
+        <ul>
+          <li>2 Centros de maquinado HASS VF-2</li>
+          <li>Fresadoras verticales (MACLANE No.2, MILL PORT No.2)</li>
+          <li>Fresadora vertical KRV2000</li>
+          <li>Tornos IMOR y VDF</li>
+          <li>Marcadora láser</li>
+          <li>Máquina de soldar LINCOLN</li>
+          <li>2 Sierras cinta, capacidad de corte 7"</li>
+        </ul>
+      </div>
+      <div class="col-md-6">
+        <div id="carouselEquipo" class="carousel slide" data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div *ngFor="let maquina of maquinas; let i = index" 
+                 class="carousel-item text-center"
+                 [class.active]="i === 0">
+              <img [src]="maquina" class="d-block w-100 rounded shadow" alt="Máquina">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselEquipo" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselEquipo" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Trabajos Realizados -->
+<section id="trabajos" class="py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Trabajos Realizados</h2>
+    
+    <h3 class="mb-4">Piezas Grandes</h3>
+    <div class="row g-3 mb-5">
+      <div *ngFor="let trabajo of trabajosGrandes" class="col-md-4">
+        <img [src]="trabajo" class="img-fluid rounded shadow" alt="Trabajo realizado">
+      </div>
+    </div>
+
+    <h3 class="mb-4">Videos de Procesos</h3>
+    <div class="row g-3">
+      <div *ngFor="let video of videos" class="col-md-4">
+        <div class="video-thumbnail" (click)="openVideoModal(video.src)">
+          <img [src]="video.thumb" class="img-fluid rounded shadow" alt="Video">
+          <div class="play-button">▶</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Modal de Video -->
+<div class="modal fade" id="videoModal" tabindex="-1">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content bg-dark">
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <video *ngIf="currentVideo" controls class="w-100" autoplay>
+          <source [src]="currentVideo" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</div>

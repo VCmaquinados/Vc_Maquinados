@@ -1,0 +1,33 @@
+header .carousel-item img {
+  object-fit: cover;
+  height: 100vh;
+  filter: brightness(60%);
+}
+
+header .carousel-caption {
+  z-index: 2;
+  text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+}
+
+.servicio-card {
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.servicio-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+}
+
+.servicio-icon {
+  font-size: 3rem;
+}
+
+.client-logo img {
+  max-width: 100%;
+  height: auto;
+  transition: transform 0.3s;
+}
+
+.client-logo:hover img {
+  transform: scale(1.1);
+}
