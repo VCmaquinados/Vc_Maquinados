@@ -1,64 +1,196 @@
-<!-- Home con carrusel -->
-<header id="home" class="vh-100 d-flex align-items-center justify-content-center text-center text-light bg-dark">
-  <div id="carouselHeader" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel">
-    <div class="carousel-inner h-100">
-      <div *ngFor="let item of carouselItems; let i = index" 
-           class="carousel-item h-100" 
-           [class.active]="i === 0">
-        <img [src]="item.image" class="d-block w-100 h-100 object-fit-cover" [alt]="item.title">
-        <div class="carousel-caption d-flex flex-column justify-content-center h-100">
-          <h1 class="display-4 fw-bold">{{ item.title }}</h1>
-          <p class="lead">{{ item.subtitle }}</p>
-          <p *ngIf="item.description">{{ item.description }}</p>
-        </div>
-      </div>
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHeader" data-bs-slide="prev">
-      <span class="carousel-control-prev-icon"></span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselHeader" data-bs-slide="next">
-      <span class="carousel-control-next-icon"></span>
-    </button>
-  </div>
-</header>
+<!-- Carrusel del home -->
+<app-carousel-header></app-carousel-header>
 
-<!-- Servicios -->
-<section id="servicios" class="py-5 bg-light">
+<!-- Remembranza -->
+<section id="remembranza" class="py-5">
   <div class="container">
-    <h2 class="text-center mb-5 fw-bold">Nuestros Servicios</h2>
-    <div class="row g-4">
-      <div *ngFor="let servicio of servicios" class="col-md-6 col-lg-3">
-        <div class="card h-100 text-center shadow-sm border-0 servicio-card">
-          <div class="card-body">
-            <div class="servicio-icon mb-3">{{ servicio.icon }}</div>
-            <h5 class="card-title fw-bold">{{ servicio.title }}</h5>
-            <p class="card-text">{{ servicio.desc }}</p>
+    <div class="row align-items-center">
+      
+      <!-- Imagen a la izquierda -->
+      <div class="col-md-6 mb-3 mb-md-0">
+        <img src="img/puebla.png" class="img-fluid rounded shadow" alt="Imagen de Puebla" loading="eager">
+          <p class="mt-2 fw-bold" >Actualmente nos ubicamos en el estado de puebla</p>
+      </div>
+      
+      <!-- Texto a la derecha -->
+      <div class="col-md-6 d-flex flex-column justify-content-center text-center text-md-start">
+        <h2 class="mb-4">Remembranza</h2>
+        <p>Moldes y maquinados VC, es una empresa de manufactura industrial la cual surge con la finalidad de ofrecer servicios a empresas, con necesidades y demanda en cuanto a maquinados, mantenimientos y/o servicios integrales.</p>
+        <p>Somos una empresa con experiencia y capacidad para ofrecer soluciones a las necesidades de nuestros clientes.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+    <!-- Servicios , por el momento solo manda a al vista general de equipo y trabajos-->
+    <section id="servicios" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-3">Nuestros Servicios</h2>
+          <p class="text-muted">Soluciones integrales para la industria manufacturera</p>
+        </div>
+        
+        <div class="row g-4">
+          <div *ngFor="let servicio of servicios" class="col-md-6 col-lg-4">
+            <div class="card h-100 border-0 shadow-sm servicio-card">
+              <div class="card-body d-flex flex-column p-4">
+                <div class="servicio-icon mb-3 text-center">
+                  <span class="display-3">{{ servicio.icon }}</span>
+                </div>
+                <h5 class="card-title text-center fw-bold mb-3">{{ servicio.title }}</h5>
+                <p class="card-text text-muted flex-grow-1">{{ servicio.desc }}</p>
+                <a [routerLink]="servicio.link" 
+                   [fragment]="servicio.fragment" 
+                   class="btn btn-{{servicio.color}} w-100 mt-3">
+                  Ver Trabajos
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Clientes -->
-<section id="clientes" class="py-5">
-  <div class="container">
-    <h2 class="text-center mb-5 fw-bold">Nuestros Clientes</h2>
-    <div class="row g-4 justify-content-center">
-      <div *ngFor="let cliente of clientes" class="col-6 col-md-4 col-lg-2">
-        <div class="client-logo">
-          <img [src]="cliente" alt="Cliente" class="img-fluid rounded shadow-sm">
+    <!-- Sección Trabajos -->
+    <section id="trabajos" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-3">Galería de Trabajos</h2>
+          <p class="text-muted">Explora algunos de nuestros proyectos destacados</p>
+        </div>
+        
+        <div class="row g-4">
+          <div *ngFor="let trabajo of trabajosDestacados" class="col-md-6 col-lg-4">
+            <div class="card h-100 trabajo-card-home border-0 shadow-sm" 
+                 data-bs-toggle="modal" 
+                 [attr.data-bs-target]="'#modal' + trabajo.id">
+              
+              <div class="position-relative overflow-hidden">
+                <img [src]="trabajo.imagen" 
+                     class="card-img-top trabajo-img-home" 
+                     [alt]="trabajo.titulo"
+                     onError="this.src='img/proximamente.png'">
+                <div class="trabajo-overlay-home">
+                  <span class="display-3">{{ trabajo.icono }}</span>
+                  <p class="mt-3 fw-bold fs-5">Click para ver</p>
+                </div>
+                <div class="trabajo-badge-home">
+                  <span class="badge bg-{{ trabajo.color }}">
+                    🎥 {{ trabajo.items.length }} videos
+                  </span>
+                </div>
+              </div>
+              
+              <div class="card-body text-center p-4">
+                <h5 class="card-title fw-bold text-{{ trabajo.color }} mb-3">{{ trabajo.titulo }}</h5>
+                <p class="card-text text-muted mb-3">{{ trabajo.descripcion }}</p>
+                <button class="btn btn-{{ trabajo.color }} w-100">
+                  <span class="me-2">▶️</span> Ver Videos
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="text-center mt-5">
+          <a routerLink="/equipo-trabajos" class="btn btn-outline-primary btn-lg">
+            <span class="me-2">🔍</span> Ver Todos los Trabajos
+          </a>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </section>
 
-<!-- Contacto -->
-<section id="contacto" class="py-5 bg-dark text-light">
-  <div class="container text-center">
-    <h2 class="mb-4 fw-bold">Contáctanos</h2>
-    <p class="lead mb-4">Estamos listos para ayudarte con tus proyectos.</p>
-    <a href="mailto:contacto@vcmaquinados.com" class="btn btn-warning btn-lg">Enviar Mensaje</a>
-  </div>
-</section>
+    <!-- Modales para trabajos -->
+    <app-trabajos-modal 
+      *ngFor="let trabajo of trabajosDestacados"
+      [modalId]="'modal' + trabajo.id"
+      [titulo]="trabajo.titulo"
+      [descripcion]="trabajo.descripcion"
+      [items]="trabajo.items">
+    </app-trabajos-modal>
+
+       <!-- Clientes -->
+    <section id="clientes" class="py-5">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-3">Nuestros Clientes</h2>
+          <p class="text-muted">Empresas que confían en nosotros</p>
+        </div>
+        
+        <div class="row align-items-center">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <ul class="list-unstyled fs-5">
+              <li *ngFor="let cliente of clientesLista" class="mb-2">
+                <span class="text-primary fw-bold">✔️</span> {{ cliente }}
+              </li>
+            </ul>
+          </div>
+          
+          <div class="col-md-6">
+            <app-clientes-carousel 
+              [clientes]="clientes"
+              carouselId="carouselClientes">
+            </app-clientes-carousel>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Objetivos, Misión, Visión y Valores -->
+    <section id="objetivos" class="py-5 bg-light">
+      <div class="container">
+        <div class="text-center mb-5">
+          <h2 class="fw-bold mb-3">{{ objetivoEmpresarial.titulo }}</h2>
+          <p class="text-muted fs-5">{{ objetivoEmpresarial.descripcion }}</p>
+        </div>
+        
+        <div class="row g-4">
+          <!-- Misión -->
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm objetivo-card">
+              <div class="card-body text-center p-4">
+                <div class="objetivo-icon mb-3">
+                  <span class="display-1">{{ mision.icon }}</span>
+                </div>
+                <h5 class="card-title fw-bold text-{{ mision.color }} mb-3">{{ mision.titulo }}</h5>
+                <p class="card-text text-muted">{{ mision.descripcion }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visión -->
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm objetivo-card">
+              <div class="card-body text-center p-4">
+                <div class="objetivo-icon mb-3">
+                  <span class="display-1">{{ vision.icon }}</span>
+                </div>
+                <h5 class="card-title fw-bold text-{{ vision.color }} mb-3">{{ vision.titulo }}</h5>
+                <p class="card-text text-muted">{{ vision.descripcion }}</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Valores -->
+          <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm objetivo-card">
+              <div class="card-body text-center p-4">
+                <div class="objetivo-icon mb-3">
+                  <span class="display-1">{{ valores.icon }}</span>
+                </div>
+                <h5 class="card-title fw-bold text-{{ valores.color }} mb-3">{{ valores.titulo }}</h5>
+                <ul class="list-unstyled text-start mt-4">
+                  <li *ngFor="let valor of valores.lista" class="mb-2">
+                    <span class="me-2">{{ valor.icon }}</span>
+                    <span class="fw-semibold">{{ valor.nombre }}</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+

@@ -1,0 +1,56 @@
+<!-- Modal -->
+<div class="modal fade" [id]="modalId" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-lg">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold">{{ titulo }}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      
+      <div class="modal-body text-center">
+        <div [id]="'carousel' + modalId" class="carousel slide" data-bs-ride="carousel">
+          
+          <div class="carousel-inner">
+            <div *ngFor="let item of items; let i = index" 
+                 class="carousel-item"
+                 [class.active]="i === 0">
+              
+              <!-- Imagen -->
+              <img *ngIf="item.tipo === 'imagen'" 
+                   [src]="item.src" 
+                   class="d-block w-100" 
+                   [alt]="item.alt || 'Trabajo realizado'"
+                   loading="lazy">
+              
+              <!-- Video -->
+              <video *ngIf="item.tipo === 'video'" 
+                     class="w-100" 
+                     controls 
+                     preload="metadata">
+                <source [src]="item.src" type="video/mp4">
+                Tu navegador no soporta videos HTML5.
+              </video>
+            </div>
+          </div>
+          
+          <button class="carousel-control-prev" 
+                  type="button" 
+                  [attr.data-bs-target]="'#carousel' + modalId" 
+                  data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+          </button>
+          <button class="carousel-control-next" 
+                  type="button" 
+                  [attr.data-bs-target]="'#carousel' + modalId" 
+                  data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+          </button>
+        </div>
+        
+        <p class="mt-3" *ngIf="descripcion">{{ descripcion }}</p>
+      </div>
+      
+    </div>
+  </div>
+</div>

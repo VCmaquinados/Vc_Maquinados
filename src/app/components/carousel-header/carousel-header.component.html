@@ -1,1 +1,43 @@
-<p>carousel-header works!</p>
+<!-- Home con carrusel -->
+<header id="home" class="vh-100 d-flex align-items-center justify-content-center text-center text-light bg-dark">
+  <div id="carouselHeader" class="carousel slide carousel-fade w-100 h-100" data-bs-ride="carousel">
+    <div class="carousel-inner h-100">
+
+      <!-- Imagen 1 -->
+      <div class="carousel-item active h-100">
+        <img src="img/home/fondo.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Imagen 1" loading="eager">
+        <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+          <h1 class="display-4 fw-bold">MOLDES Y MAQUINADOS VC</h1>
+          <p class="lead">"Tools for Industry"</p>
+          <p>Soluciones en manufactura, maquinados y servicios integrales.</p>
+        </div>
+      </div>
+      <!-- Imagen 2 -->
+      <div class="carousel-item h-100">
+        <img src="img/home/cnc.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Imagen 2" loading="lazy">
+        <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+          <h1 class="display-4 fw-bold">Maquinados CNC</h1>
+          <p class="lead">Precisión y calidad en cada pieza.</p>
+        </div>
+      </div>
+
+      <!-- Imagen 3 -->
+      <div class="carousel-item h-100">
+        <img src="img/home/master.jpg" class="d-block w-100 h-100 object-fit-cover" alt="Imagen 3" loading="lazy">
+        <div class="carousel-caption d-flex flex-column justify-content-center h-100">
+          <h1 class="display-4 fw-bold">Mantenimiento y Programación</h1>
+          <p class="lead">Soluciones industriales a la medida.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Controles -->
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHeader" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselHeader" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+  </div>
+</header>

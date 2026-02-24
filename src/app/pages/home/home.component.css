@@ -1,3 +1,6 @@
+/* =========================
+   Carrusel Header
+========================= */
 header .carousel-item img {
   object-fit: cover;
   height: 100vh;
@@ -7,19 +10,226 @@ header .carousel-item img {
 header .carousel-caption {
   z-index: 2;
   text-shadow: 1px 1px 6px rgba(0,0,0,0.7);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+header h1 {
+  font-size: 3rem;
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+}
+
+header p.lead {
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+header .carousel-caption p:not(.lead) {
+  color: #ddd;
+  font-size: 1.1rem;
+}
+
+/* =========================
+   Sección Remembranza
+========================= */
+#remembranza img {
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  width: 100%;
+  height: auto;
+}
+
+#remembranza img:hover {
+  transform: scale(1.05);
+}
+
+#remembranza h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+#remembranza p {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: #444;
+}
+
+/* =========================
+   Sección Servicios
+========================= */
+#servicios h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+#servicios .card {
+  border: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  height: 100%;
+}
+
+#servicios .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.2);
 }
 
 .servicio-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.servicio-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .servicio-icon {
-  font-size: 3rem;
+  font-size: 3.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.servicio-card .btn {
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  border: none;
+  font-weight: 700;
+  color: #111;
+  border-radius: 10px;
+  text-transform: uppercase;
+  transition: all 0.3s;
+}
+
+.servicio-card .btn:hover {
+  background: linear-gradient(45deg, #ff8c00, #ffd700);
+  color: #000;
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   Sección Trabajos
+========================= */
+#trabajos {
+  background: #eeeef4;
+}
+
+#trabajos h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  color: #1a1a1a;
+  margin-bottom: 2rem;
+}
+
+.trabajo-card-home {
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border-radius: 15px;
+  overflow: hidden;
+  border: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.12);
+}
+
+.trabajo-card-home:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+}
+
+.trabajo-img-home {
+  height: 220px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.trabajo-card-home:hover .trabajo-img-home {
+  transform: scale(1.15);
+  filter: brightness(0.8);
+}
+
+.trabajo-overlay-home {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,215,0,0.9) 0%, rgba(255,140,0,0.9) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #111;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.trabajo-card-home:hover .trabajo-overlay-home {
+  opacity: 1;
+}
+
+.trabajo-badge-home {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 2;
+}
+
+.trabajo-badge-home .badge {
+  font-size: 0.9rem;
+  padding: 10px 15px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+}
+
+.trabajo-card-home .btn {
+  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  border: none;
+  font-weight: 700;
+  color: #111;
+  transition: all 0.3s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.trabajo-card-home .btn:hover {
+  background: linear-gradient(45deg, #ff8c00, #ffd700);
+  transform: scale(1.08);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+/* =========================
+   Sección Clientes
+========================= */
+#clientes h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+#clientes ul li {
+  margin-bottom: 0.7rem;
+  font-size: 1.15rem;
+  color: #444;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+#clientes ul li::before {
+  position: absolute;
+  left: 0;
+  color: #ffd700;
 }
 
 .client-logo img {
@@ -30,4 +240,116 @@ header .carousel-caption {
 
 .client-logo:hover img {
   transform: scale(1.1);
+}
+
+/* =========================
+   Sección Objetivos
+========================= */
+#objetivos h2 {
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  color: #1a1a1a;
+}
+
+#objetivos .card {
+  border: none;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+  height: 100%;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+}
+
+#objetivos .card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.objetivo-card {
+  transition: all 0.4s ease;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.objetivo-icon {
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.objetivo-card .card-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+#objetivos ul {
+  padding-left: 1rem;
+  text-align: left;
+  color: #444;
+  list-style: none;
+}
+
+#objetivos ul li {
+  margin-bottom: 0.5rem;
+  position: relative;
+  padding-left: 1.2rem;
+}
+
+#objetivos ul li::before {
+  position: absolute;
+  left: 0;
+  color: #ffd700;
+}
+
+/* =========================
+   Responsivo
+========================= */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+  
+  header p.lead {
+    font-size: 1.2rem;
+  }
+  
+  #clientes ul li,
+  #remembranza p {
+    font-size: 1rem;
+  }
+  
+  #servicios .card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .trabajo-img-home {
+    height: 180px;
+  }
+}
+
+@media (max-width: 576px) {
+  header h1 {
+    font-size: 1.5rem;
+  }
+  
+  header p.lead {
+    font-size: 1rem;
+  }
+  
+  h2 {
+    font-size: 2rem !important;
+  }
+  
+  .trabajo-img-home {
+    height: 150px;
+  }
 }

@@ -5,13 +5,7 @@
     <div class="row align-items-center">
       <div class="col-md-6">
         <ul>
-          <li>2 Centros de maquinado HASS VF-2</li>
-          <li>Fresadoras verticales (MACLANE No.2, MILL PORT No.2)</li>
-          <li>Fresadora vertical KRV2000</li>
-          <li>Tornos IMOR y VDF</li>
-          <li>Marcadora láser</li>
-          <li>Máquina de soldar LINCOLN</li>
-          <li>2 Sierras cinta, capacidad de corte 7"</li>
+          <li *ngFor="let equipo of equipoLista">{{ equipo }}</li>
         </ul>
       </div>
       <div class="col-md-6">
@@ -20,7 +14,12 @@
             <div *ngFor="let maquina of maquinas; let i = index" 
                  class="carousel-item text-center"
                  [class.active]="i === 0">
-              <img [src]="maquina" class="d-block w-100 rounded shadow" alt="Máquina">
+              <img [src]="maquina.imagen" 
+                   class="d-block w-100 rounded shadow" 
+                   [alt]="maquina.nombre"
+                   [loading]="i === 0 ? 'eager' : 'lazy'"
+                   onError="this.src='img/proximamente.png'">
+              <p class="mt-2 fw-bold">{{ maquina.nombre }}</p>
             </div>
           </div>
           <button class="carousel-control-prev" type="button" data-bs-target="#carouselEquipo" data-bs-slide="prev">
@@ -36,41 +35,148 @@
 </section>
 
 <!-- Trabajos Realizados -->
-<section id="trabajos" class="py-5">
+<section id="trabajos" class="py-5 bg-light">
   <div class="container">
     <h2 class="text-center mb-5">Trabajos Realizados</h2>
-    
-    <h3 class="mb-4">Piezas Grandes</h3>
-    <div class="row g-3 mb-5">
-      <div *ngFor="let trabajo of trabajosGrandes" class="col-md-4">
-        <img [src]="trabajo" class="img-fluid rounded shadow" alt="Trabajo realizado">
-      </div>
-    </div>
-
-    <h3 class="mb-4">Videos de Procesos</h3>
-    <div class="row g-3">
-      <div *ngFor="let video of videos" class="col-md-4">
-        <div class="video-thumbnail" (click)="openVideoModal(video.src)">
-          <img [src]="video.thumb" class="img-fluid rounded shadow" alt="Video">
-          <div class="play-button">▶</div>
+    <div class="row g-4">
+      
+      <div *ngFor="let trabajo of trabajos" class="col-md-4">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden">
+          <div class="position-relative">
+            <img [src]="trabajo.imagen" 
+                 class="card-img-top" 
+                 [alt]="trabajo.titulo"
+                 loading="lazy"
+                 onError="this.src='img/proximamente.png'">
+            <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge bg-{{ trabajo.color }} fs-4 p-2">
+                {{ trabajo.icono }}
+              </span>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <span class="display-4">{{ trabajo.icono }}</span>
+            </div>
+            <h5 class="card-title fw-bold text-{{ trabajo.color }}">{{ trabajo.titulo }}</h5>
+            <p class="card-text text-muted mb-3">{{ trabajo.descripcion }}</p>
+            <button type="button" 
+                    class="btn btn-{{ trabajo.color }} w-100" 
+                    data-bs-toggle="modal" 
+                    [attr.data-bs-target]="'#modal' + trabajo.id">
+              <span class="me-2">🔍</span> Ver Detalles
+            </button>
+          </div>
         </div>
       </div>
+
     </div>
   </div>
 </section>
 
-<!-- Modal de Video -->
-<div class="modal fade" id="videoModal" tabindex="-1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content bg-dark">
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+<!-- Modales para Trabajos -->
+<app-trabajos-modal 
+  *ngFor="let trabajo of trabajos"
+  [modalId]="'modal' + trabajo.id"
+  [titulo]="trabajo.titulo"
+  [descripcion]="trabajo.descripcion"
+  [items]="trabajo.items">
+</app-trabajos-modal>
+
+<!-- Mantenimiento -->
+<section id="mantenimiento" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Mantenimiento Realizado</h2>
+    <div class="row g-4">
+      
+      <div *ngFor="let mant of mantenimiento" class="col-md-4">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden">
+          <div class="position-relative">
+            <img [src]="mant.imagen" 
+                 class="card-img-top" 
+                 [alt]="mant.titulo"
+                 loading="lazy"
+                 onError="this.src='img/proximamente.png'">
+            <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge bg-{{ mant.color }} fs-4 p-2">
+                {{ mant.icono }}
+              </span>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <span class="display-4">{{ mant.icono }}</span>
+            </div>
+            <h5 class="card-title fw-bold text-{{ mant.color }}">{{ mant.titulo }}</h5>
+            <p class="card-text text-muted mb-3">{{ mant.descripcion }}</p>
+            <button type="button" 
+                    class="btn btn-{{ mant.color }} w-100" 
+                    data-bs-toggle="modal" 
+                    [attr.data-bs-target]="'#modal' + mant.id">
+              <span class="me-2">🔍</span> Ver Detalles
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <video *ngIf="currentVideo" controls class="w-100" autoplay>
-          <source [src]="currentVideo" type="video/mp4">
-        </video>
-      </div>
+
     </div>
   </div>
-</div>
+</section>
+
+<!-- Modales para Mantenimiento -->
+<app-trabajos-modal 
+  *ngFor="let mant of mantenimiento"
+  [modalId]="'modal' + mant.id"
+  [titulo]="mant.titulo"
+  [descripcion]="mant.descripcion"
+  [items]="mant.items">
+</app-trabajos-modal>
+
+<!-- Diseño y Programación -->
+<section id="mastercam" class="py-5 bg-light">
+  <div class="container">
+    <h2 class="text-center mb-5">Diseño y programación</h2>
+    <div class="row g-4">
+      
+      <div *ngFor="let diseno of disenoProgra" class="col-md-4">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden">
+          <div class="position-relative">
+            <img [src]="diseno.imagen" 
+                 class="card-img-top" 
+                 [alt]="diseno.titulo"
+                 loading="lazy"
+                 onError="this.src='img/proximamente.png'">
+            <div class="position-absolute top-0 start-0 m-3">
+              <span class="badge bg-{{ diseno.color }} fs-4 p-2">
+                {{ diseno.icono }}
+              </span>
+            </div>
+          </div>
+          <div class="card-body text-center">
+            <div class="mb-3">
+              <span class="display-4">{{ diseno.icono }}</span>
+            </div>
+            <h5 class="card-title fw-bold text-{{ diseno.color }}">{{ diseno.titulo }}</h5>
+            <p class="card-text text-muted mb-3">{{ diseno.descripcion }}</p>
+            <button type="button" 
+                    class="btn btn-{{ diseno.color }} w-100" 
+                    data-bs-toggle="modal" 
+                    [attr.data-bs-target]="'#modal' + diseno.id">
+              <span class="me-2">🔍</span> Ver Detalles
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Modales para Diseño y Programación -->
+<app-trabajos-modal 
+  *ngFor="let diseno of disenoProgra"
+  [modalId]="'modal' + diseno.id"
+  [titulo]="diseno.titulo"
+  [descripcion]="diseno.descripcion"
+  [items]="diseno.items">
+</app-trabajos-modal>

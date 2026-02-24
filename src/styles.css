@@ -1,11 +1,120 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 body {
   scroll-behavior: smooth;
   font-family: 'Montserrat', Arial, sans-serif;
-  margin: 0;
   color: #333;
   background-color: #f4f4f9;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Montserrat', sans-serif;
+}
+
+router-outlet + * {
+  flex: 1;
+}
+
+/* =========================
+   Navbar Estilos Globales
+========================= */
+.navbar {
+  background-color: #1a1a1a !important;
+  padding: 0.8rem 0;
+}
+
+.navbar .nav-link {
+  color: #fff;
+  font-weight: 600;
+  transition: color 0.3s;
+}
+
+.navbar .nav-link:hover {
+  color: #ffd700;
+}
+
+.navbar-brand {
+  font-weight: 700;
+  color: #ffffff !important;
+  text-transform: uppercase;
+}
+
+/* =========================
+   Modales Globales
+========================= */
+.modal-content {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.modal-body img {
+  max-height: 400px;
+  width: 100%;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: transform 0.3s;
+}
+
+.modal-body img:hover {
+  transform: scale(1.03);
+}
+
+.modal-body p {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #444;
+}
+
+.modal-body,
+.modal-header {
+  text-align: center;
+}
+
+/* =========================
+   Footer Estilos Globales
+========================= */
+footer {
+  background-color: #111;
+  color: #fff;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+footer h5 {
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: #ffd700;
+}
+
+footer a {
+  color: #fff;
+  transition: color 0.3s;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+footer .flex-fill {
+  flex: 1 1 250px;
+}
+
+footer p, footer a {
+  margin-bottom: 0.5rem;
 }

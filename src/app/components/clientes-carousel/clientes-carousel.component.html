@@ -1,0 +1,21 @@
+<div [id]="carouselId" class="carousel slide" data-bs-ride="carousel">
+  <div class="carousel-inner">
+    <div *ngFor="let cliente of clientes; let i = index" 
+         class="carousel-item text-center"
+         [class.active]="i === 0">
+      <img [src]="cliente.imagen" 
+           class="d-block w-100 rounded shadow cliente-img" 
+           [alt]="cliente.nombre">
+      <p class="mt-3 fw-bold fs-5">{{ cliente.nombre }}</p>
+    </div>
+  </div>
+  
+  <button class="carousel-control-prev" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon bg-dark rounded-circle p-3"></span>
+    <span class="visually-hidden">Anterior</span>
+  </button>
+  <button class="carousel-control-next" type="button" [attr.data-bs-target]="'#' + carouselId" data-bs-slide="next">
+    <span class="carousel-control-next-icon bg-dark rounded-circle p-3"></span>
+    <span class="visually-hidden">Siguiente</span>
+  </button>
+</div>

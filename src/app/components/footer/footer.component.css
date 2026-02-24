@@ -1,0 +1,205 @@
+/* Footer styles */
+footer {
+  margin-top: auto;
+  border-top: 4px solid #ffd700;
+  background-color: #111;
+}
+
+footer h5 {
+  color: #ffd700;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+footer a {
+  color: #fff;
+  transition: color 0.3s, transform 0.3s;
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: #ffd700;
+  text-decoration: underline;
+}
+
+.hover-link {
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.hover-link:hover {
+  color: #ffd700 !important;
+  transform: translateX(5px);
+}
+
+footer a:hover i {
+  transform: scale(1.2);
+  transition: transform 0.3s ease;
+}
+
+/* Contenedor flotante de contacto */
+.contact-float-container {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  z-index: 1000;
+}
+
+/* Botón principal */
+.contact-float-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 150px;
+  height: 56px;
+  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
+  color: #111;
+  border: none;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 15px;
+  font-weight: 700;
+  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  animation: float-pulse 3s infinite;
+  z-index: 1001;
+}
+
+.contact-float-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
+  background: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+}
+
+.contact-float-btn i {
+  font-size: 24px;
+}
+
+.contact-text {
+  letter-spacing: 0.5px;
+}
+
+/* Animación del botón principal */
+@keyframes float-pulse {
+  0%, 100% {
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(255, 215, 0, 0.7), 0 0 0 8px rgba(255, 215, 0, 0.1);
+  }
+}
+
+/* Cuando el menú está activo */
+.contact-float-container.active .contact-float-btn {
+  background: linear-gradient(135deg, #dc3545 0%, #a71d2a 100%);
+  animation: none;
+}
+
+/* Menú de opciones */
+.contact-menu {
+  position: fixed;
+  bottom: 100px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.contact-menu.show {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Opciones de contacto */
+.contact-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  border-radius: 25px;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
+  width: 150px;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.contact-option i {
+  font-size: 22px;
+}
+
+/* Opción de WhatsApp */
+.whatsapp-option {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  animation-delay: 0.1s;
+}
+
+.whatsapp-option:hover {
+  background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+
+/* Opción de Email */
+.email-option {
+  background: linear-gradient(135deg, #EA4335 0%, #C5221F 100%);
+  animation-delay: 0.2s;
+}
+
+.email-option:hover {
+  background: linear-gradient(135deg, #C5221F 0%, #A50E0E 100%);
+  transform: translateX(-5px);
+  box-shadow: 0 6px 20px rgba(234, 67, 53, 0.4);
+}
+
+/* Animación de entrada de opciones */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  footer .container {
+    flex-direction: column;
+  }
+  
+  .contact-float-btn {
+    bottom: 20px;
+    right: 20px;
+    width: 130px;
+    height: 50px;
+    font-size: 14px;
+  }
+
+  .contact-float-btn i {
+    font-size: 20px;
+  }
+
+  .contact-menu {
+    bottom: 80px;
+    right: 20px;
+  }
+
+  .contact-option {
+    width: 130px;
+  }
+}

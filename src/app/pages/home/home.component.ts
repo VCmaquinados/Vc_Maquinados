@@ -1,61 +1,194 @@
 import { Component, OnInit, OnDestroy, PLATFORM_ID, Inject } from '@angular/core';
-import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { CommonModule, isPlatformBrowser, ViewportScroller } from '@angular/common';
+import { RouterLink, ActivatedRoute } from '@angular/router';
+import { CarouselHeaderComponent } from '../../components/carousel-header/carousel-header.component';
+import { ClientesCarouselComponent } from '../../components/clientes-carousel/clientes-carousel.component';
+import { TrabajosModalComponent, MediaItem } from '../../components/trabajos-modal/trabajos-modal.component';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, CarouselHeaderComponent, RouterLink, ClientesCarouselComponent, TrabajosModalComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  private carousel: any;
 
-  carouselItems = [
-    {
-      image: 'assets/img/home/fondo.jpg',
-      title: 'MOLDES Y MAQUINADOS VC',
-      subtitle: '"Tools for Industry"',
-      description: 'Soluciones en manufactura, maquinados y servicios integrales.'
-    },
-    {
-      image: 'assets/img/home/cnc.jpg',
-      title: 'Maquinados CNC',
-      subtitle: 'Precisión y calidad en cada pieza.',
-      description: ''
-    }
-  ];
-
-  servicios = [
-    { icon: '⚙️', title: 'Maquinados CNC', desc: 'Precisión en cada pieza.' },
-    { icon: '🔧', title: 'Diseño y Fabricación de Moldes', desc: 'Soluciones a medida.' },
-    { icon: '🎨', title: 'Pavonado y Pintura', desc: 'Acabados de alta calidad.' },
-    { icon: '🛠️', title: 'Mantenimiento Industrial', desc: 'Reparación de equipos.' }
-  ];
-
-  clientes = [
-    'assets/img/clientes/cliente1.jpg',
-    'assets/img/clientes/cliente2.jpg',
-    'assets/img/clientes/cliente3.jpg'
-  ];
-
-  constructor(@Inject(PLATFORM_ID) private platformId: Object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private platformId: Object,
+    private route: ActivatedRoute,
+    private viewportScroller: ViewportScroller
+  ) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      const carouselElement = document.getElementById('carouselHeader');
-      if (carouselElement && (window as any).bootstrap) {
-        this.carousel = new (window as any).bootstrap.Carousel(carouselElement, {
-          interval: 5000,
-          ride: 'carousel'
-        });
-      }
+      // Dar tiempo a que los modales se rendericen
+      setTimeout(() => {
+        this.setupGlobalModalListeners();
+      }, 200);
+
+      // Manejar scroll a fragmento (sección específica)
+      this.route.fragment.subscribe(fragment => {
+        if (fragment) {
+          setTimeout(() => {
+            this.scrollToSection(fragment);
+          }, 100);
+        }
+      });
     }
   }
 
   ngOnDestroy(): void {
-    if (this.carousel) {
-      this.carousel.dispose();
+    if (isPlatformBrowser(this.platformId)) {
+      // Pausar todos los videos al salir del componente
+      this.pauseAllGlobalVideos();
     }
   }
+
+  private setupGlobalModalListeners(): void {
+    // Configurar listeners globales para todos los modales de la página
+    const modals = document.querySelectorAll('.modal');
+    
+    modals.forEach(modal => {
+      // Pausar videos globalmente cuando se cierra cualquier modal
+      modal.addEventListener('hidden.bs.modal', () => {
+        this.pauseAllGlobalVideos();
+      });
+    });
+  }
+
+  private pauseAllGlobalVideos(): void {
+    const allVideos = document.querySelectorAll('video');
+    allVideos.forEach(video => {
+      const videoElement = video as HTMLVideoElement;
+      videoElement.pause();
+      videoElement.currentTime = 0;
+    });
+  }
+
+  private scrollToSection(fragment: string): void {
+    const element = document.getElementById(fragment);
+    if (element) {
+      // Offset para compensar el navbar fixed
+      const yOffset = -80;
+      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+      window.scrollTo({ top: y, behavior: 'smooth' });
+    }
+  }
+
+  servicios = [
+    { 
+      icon: '⚙️', 
+      title: 'Maquinados CNC', 
+      desc: 'Fabricación de piezas de precisión mediante fresadora, torno CNC, rectificado y servicios especializados. Garantizamos tolerancias ajustadas, acabados de calidad superior y máxima precisión en cada componente.',
+      link: '/equipo-trabajos',
+      fragment: 'trabajos',
+      color: 'primary'
+    },
+    { 
+      icon: '🔧', 
+      title: 'Fabricación de Moldes y Mantenimiento', 
+      desc: 'Ofrecemos mantenimiento preventivo y correctivo especializado en moldes, troqueles, matrices, punzones y cilindros neumáticos. Extendemos la vida útil de sus equipos y optimizamos su rendimiento operativo.',
+      link: '/equipo-trabajos',
+      fragment: 'mantenimiento',
+      color: 'success'
+    },
+    { 
+      icon: '💻', 
+      title: 'Diseño y Programación', 
+      desc: 'Diseño CAD/CAM y programación CNC especializada utilizando softwares líderes en la industria. Convertimos sus conceptos en programas optimizados listos para manufacturación.',
+      link: '/equipo-trabajos',
+      fragment: 'mastercam',
+      color: 'info'
+    }
+  ];
+
+  clientes = [
+    { imagen: 'img/clientes/arce.png', nombre: 'Arce Tools' },
+    { imagen: 'img/clientes/FFT.jpeg', nombre: 'FFT' },
+    { imagen: 'img/clientes/avirex.png', nombre: 'Avirex' },
+    { imagen: 'img/clientes/fori.png', nombre: 'Fori Automation' },
+    { imagen: 'img/clientes/glm.png', nombre: 'GLM Components' }
+  ];
+
+  clientesLista = [
+    'Arce Tools',
+    'FFT',
+    'Avirex',
+    'Fori Automation',
+    'GLM Components'
+  ];
+
+  objetivoEmpresarial = {
+    titulo: 'Objetivos Empresariales',
+    descripcion: 'Brindar soluciones integrales en manufactura y servicios industriales, superando las expectativas de nuestros clientes.'
+  };
+
+  mision = {
+    icon: '🎯',
+    titulo: 'Misión',
+    descripcion: 'Ofrecer servicios de maquinado, mantenimiento y manufactura con calidad, puntualidad y compromiso con nuestros clientes.',
+    color: 'primary'
+  };
+
+  vision = {
+    icon: '🚀',
+    titulo: 'Visión',
+    descripcion: 'Ser reconocidos como una empresa líder en soluciones de maquinado y manufactura en la industria, innovando y creciendo continuamente.',
+    color: 'success'
+  };
+
+  valores = {
+    icon: '⭐',
+    titulo: 'Valores',
+    color: 'info',
+    lista: [
+      { icon: '🤝', nombre: 'Compromiso' },
+      { icon: '✨', nombre: 'Calidad' },
+      { icon: '💼', nombre: 'Responsabilidad' },
+      { icon: '💡', nombre: 'Innovación' },
+      { icon: '👥', nombre: 'Trabajo en equipo' }
+    ]
+  };
+
+  trabajosDestacados = [
+    {
+      id: 'videos-cnc',
+      titulo: 'Maquinados CNC',
+      descripcion: 'Procesos de maquinado en nuestros centros CNC',
+      icono: '⚙️',
+      imagen: 'img/home/cnc.jpg',
+      color: 'primary',
+      items: [
+        { tipo: 'video' as const, src: 'img/videos/cnc/video1.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/video2.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/video3.mp4' }
+      ]
+    },
+    {
+      id: 'resultados',
+      titulo: 'Resultados Finales',
+      descripcion: 'Piezas terminadas con acabados de calidad',
+      icono: '✨',
+      imagen: 'img/piezas/grandes/pc1.jpg',
+      color: 'success',
+      items: [
+        { tipo: 'video' as const, src: 'img/videos/resultados/res1.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/resultados/res2.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/resultados/res3.mp4' }
+      ]
+    },
+    {
+      id: 'programacion',
+      titulo: 'Programación CNC',
+      descripcion: 'Diseño y programación CAD/CAM',
+      icono: '💻',
+      imagen: 'img/diseno/d1.jpg',
+      color: 'info',
+      items: [
+        { tipo: 'video' as const, src: 'img/videos/programacion/prog1.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/programacion/prog2.mp4' }
+      ]
+    }
+  ];
 }
