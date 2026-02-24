@@ -6,25 +6,25 @@
       <p class="mb-2">
         <i class="bi bi-envelope-fill me-2"></i>
         <a href="mailto:luisvarela2010@hotmail.com" class="text-light text-decoration-none">
-          luisvarela2010&#64;hotmail.com
+          <strong>Correo 1:</strong> luisvarela2010&#64;hotmail.com
         </a>
       </p>
       <p class="mb-2">
         <i class="bi bi-envelope-fill me-2"></i>
         <a href="mailto:maquinados.leo80@gmail.com" class="text-light text-decoration-none">
-          maquinados.leo80&#64;gmail.com
+          <strong>Correo 2:</strong> maquinados.leo80&#64;gmail.com
         </a>
       </p>
       <p class="mb-2">
         <i class="bi bi-whatsapp me-2"></i>
         <a href="https://wa.me/522224464808" target="_blank" class="text-light text-decoration-none">
-          044 222 446 4808
+          <strong>WhatsApp:</strong> 222 446 4808
         </a>
       </p>
       <p class="mb-2">
         <i class="bi bi-telephone-fill me-2"></i>
         <a href="tel:+522222855051" class="text-light text-decoration-none">
-          01 (222) 285 5051
+          <strong>Teléfono:</strong> 222 285 5051
         </a>
       </p>
     </div>
@@ -37,7 +37,7 @@
         <a href="https://www.facebook.com/share/1Rcz3pgY6s/?mibextid=wwXIfr" 
            target="_blank" 
            class="text-light text-decoration-none hover-link">
-          VC Maquinados
+          <strong>Facebook:</strong> VC Maquinados
         </a>
       </p>
       <p class="mb-2">
@@ -45,7 +45,7 @@
         <a href="https://www.tiktok.com/@moldes.y.maquinadosvc?is_from_webapp=1&sender_device=pc"
            target="_blank" 
            class="text-light text-decoration-none hover-link">
-          &#64;moldes.y.maquinadosvc
+           <strong>TikTok:</strong> &#64;moldes.y.maquinadosvc
         </a>
       </p>
       <p class="mb-2">
@@ -53,7 +53,7 @@
         <a href="https://acortar.link/UWfyg1" 
            target="_blank" 
            class="text-light text-decoration-none hover-link">
-          Moldes y Maquinados VC
+          <strong>Buscador:</strong> Moldes y Maquinados VC
         </a>
       </p>
     </div>
@@ -81,7 +81,7 @@
 <!-- Botón flotante de contacto -->
 <div class="contact-float-container" [class.active]="menuAbierto">
   <!-- Botón principal -->
-  <button class="contact-float-btn" (click)="toggleMenu()" title="Contáctanos">
+  <button class="contact-float-btn" (click)="toggleMenu($event)" title="Contáctanos">
     <i class="bi" [class.bi-x-lg]="menuAbierto" [class.bi-chat-dots-fill]="!menuAbierto"></i>
     <span class="contact-text">{{ menuAbierto ? 'Cerrar' : 'Contáctanos' }}</span>
   </button>
@@ -90,17 +90,48 @@
   <div class="contact-menu" [class.show]="menuAbierto">
     <a href="https://wa.me/522224464808?text=Hola,%20me%20gustaría%20solicitar%20información%20sobre%20sus%20servicios" 
        target="_blank"
-       class="contact-option whatsapp-option"
-       (click)="cerrarMenu()">
+       class="contact-option whatsapp-option">
       <i class="bi bi-whatsapp"></i>
       <span>WhatsApp</span>
     </a>
     
-    <a href="mailto:luisvarela2010@hotmail.com?subject=Solicitud%20de%20información&body=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20servicios."
-       class="contact-option email-option"
-       (click)="cerrarMenu()">
+    <a href="mailto:maquinados.leo80@gmail.com?subject=Solicitud%20de%20información&body=Hola,%20me%20gustaría%20obtener%20más%20información%20sobre%20sus%20servicios."
+       class="contact-option email-option">
       <i class="bi bi-envelope-fill"></i>
       <span>Correo</span>
+    </a>
+  </div>
+</div>
+
+<!-- Botón flotante de redes sociales -->
+<div class="social-float-container" [class.active]="menuRedesSociales">
+  <!-- Botón principal -->
+  <button class="social-float-btn" (click)="toggleMenuRedes($event)" title="Síguenos">
+    <i class="bi" [class.bi-x-lg]="menuRedesSociales" [class.bi-share-fill]="!menuRedesSociales"></i>
+    <span class="social-text">{{ menuRedesSociales ? 'Cerrar' : 'Síguenos' }}</span>
+  </button>
+
+  <!-- Menú de opciones -->
+  <div class="social-menu" [class.show]="menuRedesSociales">
+    <a href="https://www.facebook.com/share/1Rcz3pgY6s/?mibextid=wwXIfr" 
+       target="_blank"
+       class="social-option facebook-option">
+      <i class="bi bi-facebook"></i>
+      <span>Facebook</span>
+    </a>
+    
+    <a href="https://www.tiktok.com/@moldes.y.maquinadosvc?is_from_webapp=1&sender_device=pc"
+       target="_blank"
+       class="social-option tiktok-option">
+      <i class="bi bi-tiktok"></i>
+      <span>TikTok</span>
+    </a>
+    
+    <a href="https://acortar.link/UWfyg1" 
+       target="_blank"
+       class="social-option google-option">
+      <i class="bi bi-google"></i>
+      <span>Google</span>
     </a>
   </div>
 </div>

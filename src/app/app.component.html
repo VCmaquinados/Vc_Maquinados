@@ -1,3 +1,8 @@
 <app-navbar></app-navbar>
+
+<!-- Loading Spinner -->
+<app-loading-spinner *ngIf="loadingService.loading$ | async"></app-loading-spinner>
+
 <router-outlet></router-outlet>
+
 <app-footer></app-footer>

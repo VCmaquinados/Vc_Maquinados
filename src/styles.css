@@ -118,3 +118,60 @@ footer .flex-fill {
 footer p, footer a {
   margin-bottom: 0.5rem;
 }
+
+/* =========================
+   Optimización de Imágenes
+========================= */
+
+/* Skeleton loading para imágenes */
+.img-loading {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 0%,
+    #e0e0e0 50%,
+    #f0f0f0 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+  min-height: 200px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Imagen cargada - fade in */
+.img-loaded {
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Imagen con error */
+.img-error {
+  filter: grayscale(100%);
+  opacity: 0.5;
+}
+
+/* Picture wrapper */
+.picture-wrapper {
+  display: contents;
+}
+
+/* Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+}

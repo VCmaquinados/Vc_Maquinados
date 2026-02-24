@@ -1,12 +1,55 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8">
-  <title>VcMaquinadosPag</title>
+  <title>Moldes y Maquinados VC - Manufactura Industrial en Puebla</title>
   <base href="/">
+  
+  <!-- Viewport -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  
+  <!-- SEO Básico -->
+  <meta name="description" content="Empresa de manufactura industrial especializada en maquinados CNC, mantenimiento de moldes, diseño CAD/CAM y programación CNC en Puebla, México. Garantizamos precisión y calidad.">
+  <meta name="keywords" content="maquinados CNC, manufactura industrial, moldes, mantenimiento industrial, diseño CAD/CAM, programación CNC, Puebla, México, fresadora CNC, torno CNC, piezas de precisión">
+  <meta name="author" content="Moldes y Maquinados VC">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://vcmaquinados.github.io/VcMaquinadosPag/">
+  <meta property="og:title" content="Moldes y Maquinados VC - Manufactura Industrial">
+  <meta property="og:description" content="Soluciones integrales en manufactura: maquinados CNC, mantenimiento de moldes y diseño CAD/CAM. Calidad y precisión garantizada.">
+  <meta property="og:image" content="https://vcmaquinados.github.io/VcMaquinadosPag/img/home/fondo.jpg">
+  <meta property="og:locale" content="es_MX">
+  
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://vcmaquinados.github.io/VcMaquinadosPag/">
+  <meta property="twitter:title" content="Moldes y Maquinados VC - Manufactura Industrial">
+  <meta property="twitter:description" content="Soluciones integrales en manufactura: maquinados CNC, mantenimiento de moldes y diseño CAD/CAM.">
+  <meta property="twitter:image" content="https://vcmaquinados.github.io/VcMaquinadosPag/img/home/fondo.jpg">
+  
+  <!-- Tema de color (móviles) -->
+  <meta name="theme-color" content="#1a1a1a">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Script para manejar rutas SPA en GitHub Pages -->
+  <script>
+    (function(){
+      var redirect = sessionStorage.redirect;
+      delete sessionStorage.redirect;
+      if (redirect && redirect != location.href) {
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
 </head>
 <body>
   <app-root></app-root>
