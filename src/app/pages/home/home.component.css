@@ -36,6 +36,36 @@ header .carousel-caption p:not(.lead) {
 /* =========================
    Sección Remembranza
 ========================= */
+.mapa-container {
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+  overflow: hidden;
+  position: relative;
+}
+
+.mapa-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+}
+
+.mapa-container iframe {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+}
+
+#remembranza p a {
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+#remembranza p a:hover {
+  text-decoration: underline;
+  color: #0056b3 !important;
+}
+
 #remembranza img {
   border-radius: 15px;
   box-shadow: 0 6px 15px rgba(0,0,0,0.3);
@@ -193,19 +223,17 @@ header .carousel-caption p:not(.lead) {
 }
 
 .trabajo-card-home .btn {
-  background: linear-gradient(45deg, #ffd700, #ff8c00);
   border: none;
   font-weight: 700;
-  color: #111;
   transition: all 0.3s;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  box-shadow: none;
 }
 
 .trabajo-card-home .btn:hover {
-  background: linear-gradient(45deg, #ff8c00, #ffd700);
   transform: scale(1.08);
-  box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+  box-shadow: none;
 }
 
 /* =========================
@@ -334,6 +362,10 @@ header .carousel-caption p:not(.lead) {
   .trabajo-img-home {
     height: 180px;
   }
+
+  .mapa-container iframe {
+    min-height: 300px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -351,5 +383,9 @@ header .carousel-caption p:not(.lead) {
   
   .trabajo-img-home {
     height: 150px;
+  }
+
+  .mapa-container iframe {
+    min-height: 250px;
   }
 }
