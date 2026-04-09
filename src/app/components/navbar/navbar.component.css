@@ -1,22 +1,22 @@
 .navbar {
-  background-color: #1a1a1a !important;
+  background: linear-gradient(90deg, var(--surface-dark) 0%, var(--surface-mid) 100%) !important;
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
 }
 
 .navbar .nav-link {
-  color: #fff;
+  color: var(--text-on-dark);
   font-weight: 600;
   transition: color 0.3s;
 }
 
 .navbar .nav-link:hover,
 .navbar .nav-link.active {
-  color: #ffd700;
+  color: var(--accent);
 }
 
 .navbar-brand {
   font-weight: 700;
-  color: #ffffff !important;
+  color: var(--text-on-dark) !important;
   text-transform: uppercase;
 }

@@ -76,6 +76,24 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   }
 
+  getMediaCount(items: any[]): string {
+    if (!items || items.length === 0) return '0';
+    
+    const videoCount = items.filter(item => item.tipo === 'video').length;
+    const imageCount = items.filter(item => item.tipo === 'imagen').length;
+    
+    let result = '';
+    if (videoCount > 0) {
+      result += `${videoCount} video${videoCount !== 1 ? 's' : ''}`;
+    }
+    if (imageCount > 0) {
+      if (result) result += ' / ';
+      result += `${imageCount} foto${imageCount !== 1 ? 's' : ''}`;
+    }
+    
+    return result || items.length.toString();
+  }
+
   servicios = [
     { 
       icon: '⚙️', 
@@ -158,11 +176,14 @@ export class HomeComponent implements OnInit, OnDestroy {
       descripcion: 'Procesos de maquinado en nuestros centros CNC',
       icono: '⚙️',
       imagen: 'img/home/cnc.jpg',
-      color: 'primary',
+      color: 'success',
       items: [
-        { tipo: 'video' as const, src: 'img/videos/cnc/video1.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/cnc/video2.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/cnc/video3.mp4' }
+        { tipo: 'video' as const, src: 'img/videos/cnc/botella_Maq.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/maquinado_R.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/matriz.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/tornillos.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/cnc/video2.mp4' }
+
       ]
     },
     {
@@ -173,8 +194,11 @@ export class HomeComponent implements OnInit, OnDestroy {
       imagen: 'img/piezas/grandes/pc1.jpg',
       color: 'success',
       items: [
+        { tipo: 'video' as const, src: 'img/videos/resultados/botella_RF.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/resultados/botella_R2.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/resultados/clavos_R.mp4' },
+        { tipo: 'video' as const, src: 'img/videos/resultados/clavos_RP.mp4' },
         { tipo: 'video' as const, src: 'img/videos/resultados/res1.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/resultados/res2.mp4' },
         { tipo: 'video' as const, src: 'img/videos/resultados/res3.mp4' }
       ]
     },
@@ -184,10 +208,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       descripcion: 'Diseño y programación CAD/CAM',
       icono: '💻',
       imagen: 'img/diseno/d1.jpg',
-      color: 'info',
+      color: 'success',
       items: [
+        { tipo: 'video' as const, src: 'img/videos/programacion/botella_D.mp4' },
         { tipo: 'video' as const, src: 'img/videos/programacion/prog1.mp4' },
         { tipo: 'video' as const, src: 'img/videos/programacion/prog2.mp4' }
+        
       ]
     }
   ];

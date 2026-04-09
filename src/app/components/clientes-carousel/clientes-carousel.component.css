@@ -15,7 +15,8 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(86%) sepia(61%) saturate(859%) hue-rotate(9deg) brightness(98%) contrast(103%);
+  background-color: transparent;
+  opacity: 0.5;
 }
 
 .carousel-control-prev,

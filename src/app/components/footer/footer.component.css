@@ -1,24 +1,24 @@
 /* Footer styles */
 footer {
   margin-top: auto;
-  border-top: 4px solid #ffd700;
-  background-color: #111;
+  border-top: 4px solid var(--accent);
+  background: linear-gradient(180deg, var(--surface-mid) 0%, var(--surface-dark) 100%);
 }
 
 footer h5 {
-  color: #ffd700;
+  color: var(--accent);
   letter-spacing: 1px;
   font-weight: 700;
 }
 
 footer a {
-  color: #fff;
+  color: var(--text-on-dark);
   transition: color 0.3s, transform 0.3s;
   text-decoration: none;
 }
 
 footer a:hover {
-  color: #ffd700;
+  color: var(--accent);
   text-decoration: underline;
 }
 
@@ -28,7 +28,7 @@ footer a:hover {
 }
 
 .hover-link:hover {
-  color: #ffd700 !important;
+  color: var(--accent) !important;
   transform: translateX(5px);
 }
 
@@ -52,8 +52,8 @@ footer a:hover i {
   right: 30px;
   width: 150px;
   height: 56px;
-  background: linear-gradient(135deg, #ffd700 0%, #ff8c00 100%);
-  color: #111;
+  background: linear-gradient(135deg, var(--green-400) 0%, var(--green-750) 100%);
+  color: var(--text-on-dark);
   border: none;
   border-radius: 30px;
   display: flex;
@@ -62,7 +62,7 @@ footer a:hover i {
   gap: 8px;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+  box-shadow: 0 4px 15px rgba(35, 83, 71, 0.35);
   cursor: pointer;
   transition: all 0.3s ease;
   animation: float-pulse 3s infinite;
@@ -71,8 +71,8 @@ footer a:hover i {
 
 .contact-float-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(255, 215, 0, 0.6);
-  background: linear-gradient(135deg, #ff8c00 0%, #ffd700 100%);
+  box-shadow: 0 6px 20px rgba(35, 83, 71, 0.55);
+  background: linear-gradient(135deg, var(--green-750) 0%, var(--green-400) 100%);
 }
 
 .contact-float-btn i {
@@ -86,10 +86,10 @@ footer a:hover i {
 /* Animación del botón principal */
 @keyframes float-pulse {
   0%, 100% {
-    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+    box-shadow: 0 4px 15px rgba(35, 83, 71, 0.35);
   }
   50% {
-    box-shadow: 0 4px 25px rgba(255, 215, 0, 0.7), 0 0 0 8px rgba(255, 215, 0, 0.1);
+    box-shadow: 0 4px 25px rgba(35, 83, 71, 0.65), 0 0 0 8px rgba(140, 183, 155, 0.18);
   }
 }
 
@@ -193,7 +193,7 @@ footer a:hover i {
   right: 30px;
   width: 150px;
   height: 56px;
-  background: linear-gradient(135deg, #6c757d 0%, #495057 100%);
+  background: linear-gradient(135deg, #2b5e52 0%, #173831 100%);
   color: white;
   border: none;
   border-radius: 30px;
@@ -203,7 +203,7 @@ footer a:hover i {
   gap: 8px;
   font-size: 15px;
   font-weight: 700;
-  box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+  box-shadow: 0 4px 15px rgba(23, 56, 49, 0.4);
   cursor: pointer;
   transition: all 0.3s ease;
   z-index: 1001;
@@ -211,8 +211,8 @@ footer a:hover i {
 
 .social-float-btn:hover {
   transform: translateY(-3px);
-  box-shadow: 0 6px 20px rgba(108, 117, 125, 0.5);
-  background: linear-gradient(135deg, #495057 0%, #343a40 100%);
+  box-shadow: 0 6px 20px rgba(23, 56, 49, 0.55);
+  background: linear-gradient(135deg, #173831 0%, #0f2c26 100%);
 }
 
 .social-float-btn i {
@@ -226,10 +226,10 @@ footer a:hover i {
 /* Animación del botón de redes sociales */
 @keyframes social-pulse {
   0%, 100% {
-    box-shadow: 0 4px 15px rgba(108, 117, 125, 0.3);
+    box-shadow: 0 4px 15px rgba(23, 56, 49, 0.35);
   }
   50% {
-    box-shadow: 0 4px 25px rgba(108, 117, 125, 0.5), 0 0 0 8px rgba(108, 117, 125, 0.1);
+    box-shadow: 0 4px 25px rgba(23, 56, 49, 0.55), 0 0 0 8px rgba(140, 183, 155, 0.16);
   }
 }
 

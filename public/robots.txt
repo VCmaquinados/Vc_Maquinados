@@ -2,4 +2,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://vcmaquinados.github.io/VcMaquinadosPag/sitemap.xml
+Sitemap: https://moldes-y-maquinados-vc.netlify.app/sitemap.xml

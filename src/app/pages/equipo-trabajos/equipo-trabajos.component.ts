@@ -88,6 +88,24 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       window.scrollTo({ top: y, behavior: 'smooth' });
     }
   }
+
+  getMediaCount(items: any[]): string {
+    if (!items || items.length === 0) return '0';
+    
+    const videoCount = items.filter(item => item.tipo === 'video').length;
+    const imageCount = items.filter(item => item.tipo === 'imagen').length;
+    
+    let result = '';
+    if (videoCount > 0) {
+      result += `${videoCount} video${videoCount !== 1 ? 's' : ''}`;
+    }
+    if (imageCount > 0) {
+      if (result) result += ' / ';
+      result += `${imageCount} foto${imageCount !== 1 ? 's' : ''}`;
+    }
+    
+    return result || items.length.toString();
+  }
   
   // Lista de equipos
   equipoLista = [
@@ -120,11 +138,12 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       titulo: 'Maquinado de piezas grandes',
       descripcion: 'Piezas de gran tamaño y alta precisión.',
       icono: '🔩',
-      color: 'primary',
+      color: 'success',
       imagen: 'img/piezas/grandes/pc1.jpg',
       items: [
         { tipo: 'imagen', src: 'img/piezas/grandes/pc1.jpg', alt: 'Pieza grande 1' },
-        { tipo: 'imagen', src: 'img/piezas/grandes/pc2.jpg', alt: 'Pieza grande 2' }
+        { tipo: 'imagen', src: 'img/piezas/grandes/pc2.jpg', alt: 'Pieza grande 2' },
+        { tipo: 'imagen', src: 'img/piezas/grandes/pc3.jpeg', alt: 'Pieza grande 3' }
       ]
     },
     {
@@ -132,11 +151,13 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       titulo: 'Piezas con tratamiento y grabado',
       descripcion: 'Piezas con pavonado y grabado láser.',
       icono: '✨',
-      color: 'warning',
+      color: 'success',
       imagen: 'img/piezas/pavonado/p1.jpg',
       items: [
         { tipo: 'imagen', src: 'img/piezas/pavonado/p1.jpg', alt: 'Pavonado 1' },
-        { tipo: 'imagen', src: 'img/piezas/pavonado/p2.jpg', alt: 'Pavonado 2' }
+        { tipo: 'imagen', src: 'img/piezas/pavonado/p2.jpg', alt: 'Pavonado 2' },
+        { tipo: 'imagen', src: 'img/piezas/pavonado/p3.jpeg', alt: 'Pavonado 3' },
+        { tipo: 'imagen', src: 'img/piezas/pavonado/p4.jpeg', alt: 'Pavonado 4' }
       ]
     },
     {
@@ -144,18 +165,19 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       titulo: 'Piezas con pintura y grabado',
       descripcion: 'Aplicación de pintura de alta durabilidad.',
       icono: '🎨',
-      color: 'danger',
+      color: 'success',
       imagen: 'img/piezas/pintura/pc3.jpg',
       items: [
-        { tipo: 'imagen', src: 'img/piezas/pintura/pc3.jpg', alt: 'Pintura 1' },
-        { tipo: 'imagen', src: 'img/piezas/pintura/pc4.jpg', alt: 'Pintura 2' },
-        { tipo: 'imagen', src: 'img/piezas/pintura/pc5.jpg', alt: 'Pintura 3' },
-        { tipo: 'imagen', src: 'img/piezas/pintura/pc8.jpg', alt: 'Pintura 4' }
+        { tipo: 'imagen', src: 'img/piezas/pintura/pc1.jpeg', alt: 'Pintura 1' },
+        { tipo: 'imagen', src: 'img/piezas/pintura/pc2.jpg', alt: 'Pintura 2' },
+        { tipo: 'imagen', src: 'img/piezas/pintura/pc3.jpg', alt: 'Pintura 3' },
+        { tipo: 'imagen', src: 'img/piezas/pintura/pc4.jpg', alt: 'Pintura 4' },
+        { tipo: 'imagen', src: 'img/piezas/pintura/pc5.jpg', alt: 'Pintura 5' }
       ]
     },
     {
-      id: 'lotes',
-      titulo: 'Lotes de Piezas',
+      id: 'serie',
+      titulo: 'Piezas en serie',
       descripcion: 'Realizamos la fabricación en serie y lotes de piezas, según los requerimientos de nuestros clientes.',
       icono: '📦',
       color: 'success',
@@ -166,15 +188,14 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       ]
     },
     {
-      id: 'dispositivos',
-      titulo: 'Dispositivos',
-      descripcion: 'Fabricamos dispositivos especializados según los requerimientos de nuestros clientes.',
+      id: 'moldes y troqueles',
+      titulo: 'Moldes y troqueles',
+      descripcion: 'Diseñamos y fabricamos moldes y soluciones a la medida.',
       icono: '⚙️',
-      color: 'info',
-      imagen: 'img/proximamente.png',
+      color: 'success',
+      imagen: 'img/piezas/moldes/botella_M.jpeg',
       items: [
-        { tipo: 'imagen', src: 'img/proximamente.png', alt: 'Dispositivo 1 (Próximamente)' },
-        { tipo: 'imagen', src: 'img/proximamente.png', alt: 'Dispositivo 2 (Próximamente)' }
+        { tipo: 'imagen', src: 'img/piezas/moldes/botella_M.jpeg', alt: 'Molde de botella' }
       ]
     }
   ];
@@ -190,8 +211,7 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       imagen: 'img/piezas/mantenimiento/img.jpeg',
       items: [
         { tipo: 'imagen', src: 'img/piezas/mantenimiento/img.jpeg', alt: 'Mantenimiento de maquinaria 1' },
-        { tipo: 'imagen', src: 'img/piezas/mantenimiento/img2.jpeg', alt: 'Mantenimiento de maquinaria 2' },
-        { tipo: 'imagen', src: 'img/piezas/mantenimiento/img3.jpeg', alt: 'Mantenimiento de maquinaria 3' }
+        { tipo: 'imagen', src: 'img/piezas/mantenimiento/img2.jpeg', alt: 'Mantenimiento de maquinaria 2' }
       ]
     }
   ];
@@ -203,7 +223,7 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       titulo: 'Diseño y programación',
       descripcion: 'Diseño 3D, simulación de mecanizado y resultado final de la pieza.',
       icono: '💻',
-      color: 'info',
+      color: 'success',
       imagen: 'img/diseno/d1.jpg',
       items: [
         { tipo: 'imagen', src: 'img/diseno/d3.jpg', alt: 'Diseño 1' },

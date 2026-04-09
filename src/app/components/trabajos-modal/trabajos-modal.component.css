@@ -5,19 +5,36 @@
   max-width: 900px;
 }
 
+.modal-dialog.modal-fullscreen-sm-down {
+  margin: 1rem auto;
+}
+
 .modal-content {
   border-radius: 12px;
   border: none;
+  overflow: hidden;
 }
 
 .modal-title {
   font-weight: 600;
   width: 100%;
   text-align: center;
+  color: #ffffff;
 }
 
 .modal-body {
   padding: 20px;
+}
+
+.modal-header {
+  background: linear-gradient(90deg, var(--surface-dark) 0%, var(--surface-mid) 100%);
+  color: var(--text-on-dark);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.modal-header .btn-close {
+  filter: invert(1);
+  opacity: 0.9;
 }
 
 .modal-body img,
@@ -28,7 +45,7 @@
   display: block;
   margin: 0 auto;
   border-radius: 10px;
-  background-color: #f8f9fa;
+  background-color: #f3faf5;
 }
 
 .modal-body video {
@@ -39,7 +56,11 @@
   text-align: center;
   margin-top: 15px;
   font-size: 1.1rem;
-  color: #333;
+  color: var(--text-muted);
+}
+
+.carousel-item {
+  padding: 0.25rem;
 }
 
 /* =========================
@@ -47,7 +68,7 @@
 ========================= */
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  filter: invert(86%) sepia(61%) saturate(859%) hue-rotate(9deg) brightness(98%) contrast(103%);
+  filter: invert(22%) sepia(22%) saturate(956%) hue-rotate(118deg) brightness(90%) contrast(94%);
 }
 
 .carousel-indicators {
@@ -61,11 +82,11 @@
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background-color: rgba(255, 215, 0, 0.5);
+  background-color: rgba(140, 183, 155, 0.6);
 }
 
 .carousel-indicators button.active {
-  background-color: #ffd700;
+  background-color: var(--green-750);
 }
 
 /* =========================
@@ -76,11 +97,23 @@
   .modal-body video {
     max-height: 400px;
   }
+
+  .modal-body {
+    padding: 16px;
+  }
 }
 
 @media (max-width: 576px) {
   .modal-body img,
   .modal-body video {
-    max-height: 300px;
+    max-height: 280px;
+  }
+
+  .modal-title {
+    font-size: 1rem;
+  }
+
+  .modal-body {
+    padding: 12px;
   }
 }

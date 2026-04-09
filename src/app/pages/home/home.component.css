@@ -18,18 +18,21 @@ header .carousel-caption {
 
 header h1 {
   font-size: 3rem;
-  color: #ffd700;
+  color: #ffffff;
   margin-bottom: 0.5rem;
+  text-shadow: 2px 2px 8px rgba(0,0,0,0.5);
+  font-weight: 900;
+  letter-spacing: 1px;
 }
 
 header p.lead {
   font-size: 1.5rem;
-  color: #fff;
+  color: var(--text-on-dark);
   margin-bottom: 0.5rem;
 }
 
 header .carousel-caption p:not(.lead) {
-  color: #ddd;
+  color: #d2e8d6;
   font-size: 1.1rem;
 }
 
@@ -63,7 +66,7 @@ header .carousel-caption p:not(.lead) {
 
 #remembranza p a:hover {
   text-decoration: underline;
-  color: #0056b3 !important;
+  color: var(--accent-strong) !important;
 }
 
 #remembranza img {
@@ -83,12 +86,15 @@ header .carousel-caption p:not(.lead) {
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 1rem;
+  border-bottom: 4px solid var(--orange-primary);
+  padding-bottom: 1rem;
+  display: inline-block;
 }
 
 #remembranza p {
   font-size: 1.1rem;
   line-height: 1.7;
-  color: #444;
+  color: var(--text-muted);
 }
 
 /* =========================
@@ -99,6 +105,20 @@ header .carousel-caption p:not(.lead) {
   font-weight: 800;
   color: #1a1a1a;
   margin-bottom: 2rem;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+#servicios h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--orange-primary);
+  border-radius: 2px;
 }
 
 #servicios .card {
@@ -134,18 +154,18 @@ header .carousel-caption p:not(.lead) {
 }
 
 .servicio-card .btn {
-  background: linear-gradient(45deg, #ffd700, #ff8c00);
+  background: linear-gradient(45deg, var(--green-400), var(--green-750));
   border: none;
   font-weight: 700;
-  color: #111;
+  color: var(--text-on-dark);
   border-radius: 10px;
   text-transform: uppercase;
   transition: all 0.3s;
 }
 
 .servicio-card .btn:hover {
-  background: linear-gradient(45deg, #ff8c00, #ffd700);
-  color: #000;
+  background: linear-gradient(45deg, var(--green-750), var(--green-400));
+  color: var(--text-on-dark);
   transform: scale(1.05);
   box-shadow: 0 5px 15px rgba(0,0,0,0.2);
 }
@@ -154,7 +174,7 @@ header .carousel-caption p:not(.lead) {
    Sección Trabajos
 ========================= */
 #trabajos {
-  background: #eeeef4;
+  background: linear-gradient(180deg, #e2efe5 0%, #d4e6d8 100%);
 }
 
 #trabajos h2 {
@@ -195,12 +215,12 @@ header .carousel-caption p:not(.lead) {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(255,215,0,0.9) 0%, rgba(255,140,0,0.9) 100%);
+  background: linear-gradient(135deg, rgba(140, 183, 155, 0.9) 0%, rgba(35, 83, 71, 0.92) 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  color: #111;
+  color: var(--text-on-dark);
   opacity: 0;
   transition: opacity 0.4s ease;
 }
@@ -249,7 +269,7 @@ header .carousel-caption p:not(.lead) {
 #clientes ul li {
   margin-bottom: 0.7rem;
   font-size: 1.15rem;
-  color: #444;
+  color: var(--text-muted);
   position: relative;
   padding-left: 1.5rem;
 }
@@ -257,7 +277,7 @@ header .carousel-caption p:not(.lead) {
 #clientes ul li::before {
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: var(--accent-strong);
 }
 
 .client-logo img {
@@ -278,6 +298,20 @@ header .carousel-caption p:not(.lead) {
   font-weight: 800;
   margin-bottom: 2rem;
   color: #1a1a1a;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+#objetivos h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: var(--orange-primary);
+  border-radius: 2px;
 }
 
 #objetivos .card {
@@ -285,7 +319,7 @@ header .carousel-caption p:not(.lead) {
   box-shadow: 0 6px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s;
   height: 100%;
-  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  background: linear-gradient(135deg, #f8fdf9 0%, #e9f4ec 100%);
 }
 
 #objetivos .card:hover {
@@ -322,7 +356,7 @@ header .carousel-caption p:not(.lead) {
 #objetivos ul {
   padding-left: 1rem;
   text-align: left;
-  color: #444;
+  color: var(--text-muted);
   list-style: none;
 }
 
@@ -335,7 +369,45 @@ header .carousel-caption p:not(.lead) {
 #objetivos ul li::before {
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: var(--accent-strong);
+}
+
+/* =========================
+   Botón Ver Todos los Trabajos
+========================= */
+.btn-trabajos-all {
+  background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+  border: none;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: white;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-trabajos-all::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+  transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  z-index: -1;
+}
+
+.btn-trabajos-all:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(46, 125, 50, 0.5);
+  color: white;
+  background: linear-gradient(135deg, #2E7D32 0%, #388E3C 100%);
+}
+
+.btn-trabajos-all:hover::before {
+  left: 100%;
 }
 
 /* =========================

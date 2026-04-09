@@ -7,6 +7,20 @@ h2 {
   text-align: center;
   margin-bottom: 2rem;
   color: #1a1a1a;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 3px;
+  background: var(--accent);
+  border-radius: 2px;
 }
 
 /* =========================
@@ -28,7 +42,7 @@ h2 {
   content: "✔️";
   position: absolute;
   left: 0;
-  color: #ffd700;
+  color: var(--accent-strong);
 }
 
 /* Carousel de equipo */
@@ -62,10 +76,19 @@ h2 {
   box-shadow: 0 15px 30px rgba(0,0,0,0.2);
 }
 
+.trabajo-card {
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.trabajo-media-wrap {
+  border-radius: 12px 12px 0 0;
+}
+
 .card-img-top {
   height: 250px;
   object-fit: cover;
-  background-color: #fff;
+  background-color: #f8fdf9;
   transition: transform 0.3s, filter 0.3s;
 }
 
@@ -112,80 +135,135 @@ h2 {
 
 /* Botones con gradiente */
 .btn-primary {
-  background: linear-gradient(45deg, #007bff, #0056b3);
+  background: linear-gradient(45deg, var(--green-400), var(--green-750));
   border: none;
   font-weight: 600;
   transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(0,123,255,0.3);
+  box-shadow: 0 4px 10px rgba(35, 83, 71, 0.3);
 }
 
 .btn-primary:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #0056b3, #007bff);
-  box-shadow: 0 6px 15px rgba(0,123,255,0.5);
+  background: linear-gradient(45deg, var(--green-750), var(--green-400));
+  box-shadow: 0 6px 15px rgba(35, 83, 71, 0.5);
 }
 
 .btn-success {
-  background: linear-gradient(45deg, #28a745, #1e7e34);
+  background: linear-gradient(45deg, #2b8d67, #1f684c);
   border: none;
   font-weight: 600;
   transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(40,167,69,0.3);
+  box-shadow: 0 4px 10px rgba(31, 104, 76, 0.35);
 }
 
 .btn-success:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #1e7e34, #28a745);
-  box-shadow: 0 6px 15px rgba(40,167,69,0.5);
+  background: linear-gradient(45deg, #1f684c, #2b8d67);
+  box-shadow: 0 6px 15px rgba(31, 104, 76, 0.5);
 }
 
 .btn-warning {
-  background: linear-gradient(45deg, #ffc107, #ff8c00);
+  background: linear-gradient(45deg, #9bc7ab, #5d977f);
   border: none;
   font-weight: 600;
   transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(255,193,7,0.3);
-  color: #1a1a1a;
+  box-shadow: 0 4px 10px rgba(93, 151, 127, 0.35);
+  color: var(--surface-dark);
 }
 
 .btn-warning:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #ff8c00, #ffc107);
-  box-shadow: 0 6px 15px rgba(255,193,7,0.5);
-  color: #1a1a1a;
+  background: linear-gradient(45deg, #5d977f, #9bc7ab);
+  box-shadow: 0 6px 15px rgba(93, 151, 127, 0.5);
+  color: var(--surface-dark);
 }
 
 .btn-danger {
-  background: linear-gradient(45deg, #dc3545, #c82333);
+  background: linear-gradient(45deg, #245a4f, #143a33);
   border: none;
   font-weight: 600;
   transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(220,53,69,0.3);
+  box-shadow: 0 4px 10px rgba(20, 58, 51, 0.35);
 }
 
 .btn-danger:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #c82333, #dc3545);
-  box-shadow: 0 6px 15px rgba(220,53,69,0.5);
+  background: linear-gradient(45deg, #143a33, #245a4f);
+  box-shadow: 0 6px 15px rgba(20, 58, 51, 0.5);
 }
 
 .btn-info {
-  background: linear-gradient(45deg, #17a2b8, #138496);
+  background: linear-gradient(45deg, #5f9f8f, #2b6f63);
   border: none;
   font-weight: 600;
   transition: transform 0.2s, background 0.3s, box-shadow 0.3s;
-  box-shadow: 0 4px 10px rgba(23,162,184,0.3);
+  box-shadow: 0 4px 10px rgba(43, 111, 99, 0.35);
 }
 
 .btn-info:hover {
   transform: scale(1.05);
-  background: linear-gradient(45deg, #138496, #17a2b8);
-  box-shadow: 0 6px 15px rgba(23,162,184,0.5);
+  background: linear-gradient(45deg, #2b6f63, #5f9f8f);
+  box-shadow: 0 6px 15px rgba(43, 111, 99, 0.5);
 }
 
 /* Centrar filas con pocas tarjetas */
 .row {
   justify-content: center;
+}
+
+/* ========================================
+   Efecto Overlay en Tarjetas
+   ======================================== */
+.trabajo-card {
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+.trabajo-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25) !important;
+}
+
+.trabajo-img {
+  height: 220px;
+  object-fit: cover;
+  transition: all 0.5s ease;
+}
+
+.trabajo-card:hover .trabajo-img {
+  transform: scale(1.15);
+  filter: brightness(0.8);
+}
+
+.trabajo-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(5, 31, 32, 0.08) 0%, rgba(35, 83, 71, 0.92) 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-on-dark);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.trabajo-card:hover .trabajo-overlay {
+  opacity: 1;
+}
+
+.trabajo-card:hover .trabajo-img {
+  transform: scale(1.15);
+  filter: brightness(0.8);
+}
+
+.trabajo-card:hover .card-title {
+  transform: scale(1.05);
 }
 
 /* ========================================
@@ -196,7 +274,7 @@ h2 {
   height: 400px;
   object-fit: contain;
   border-radius: 12px;
-  background-color: #ffffff;
+  background-color: #f8fdf9;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
 }
 
@@ -233,4 +311,12 @@ h2 {
   h2 {
     font-size: 2rem;
   }
+}
+
+.btn-warning:hover,
+.btn-info:hover,
+.btn-primary:hover,
+.btn-success:hover,
+.btn-danger:hover {
+  color: var(--text-on-dark);
 }

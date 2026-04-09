@@ -41,29 +41,30 @@
     <div class="row g-4">
       
       <div *ngFor="let trabajo of trabajos" class="col-md-4">
-        <div class="card h-100 shadow-sm position-relative overflow-hidden">
-          <div class="position-relative">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden trabajo-card"
+             data-bs-toggle="modal"
+             [attr.data-bs-target]="'#modal' + trabajo.id"
+             role="button">
+          <div class="position-relative overflow-hidden trabajo-media-wrap">
             <img [src]="trabajo.imagen" 
-                 class="card-img-top" 
+                 class="card-img-top trabajo-img" 
                  [alt]="trabajo.titulo"
                  loading="lazy"
                  onError="this.src='img/proximamente.png'">
+            <div class="trabajo-overlay">
+              <p class="fw-bold fs-5 text-white mb-0">Click para ver</p>
+            </div>
             <div class="position-absolute top-0 start-0 m-3">
-              <span class="badge bg-{{ trabajo.color }} fs-4 p-2">
-                {{ trabajo.icono }}
+              <span class="badge bg-{{ trabajo.color }} fs-5 fw-bold" style="padding: 12px 15px;">
+                {{ getMediaCount(trabajo.items) }}
               </span>
             </div>
           </div>
           <div class="card-body text-center">
-            <div class="mb-3">
-              <span class="display-4">{{ trabajo.icono }}</span>
-            </div>
             <h5 class="card-title fw-bold text-{{ trabajo.color }}">{{ trabajo.titulo }}</h5>
             <p class="card-text text-muted mb-3">{{ trabajo.descripcion }}</p>
             <button type="button" 
-                    class="btn btn-{{ trabajo.color }} w-100" 
-                    data-bs-toggle="modal" 
-                    [attr.data-bs-target]="'#modal' + trabajo.id">
+                    class="btn btn-{{ trabajo.color }} w-100">
               <span class="me-2">🔍</span> Ver Detalles
             </button>
           </div>
@@ -90,29 +91,30 @@
     <div class="row g-4">
       
       <div *ngFor="let mant of mantenimiento" class="col-md-4">
-        <div class="card h-100 shadow-sm position-relative overflow-hidden">
-          <div class="position-relative">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden trabajo-card"
+             data-bs-toggle="modal"
+             [attr.data-bs-target]="'#modal' + mant.id"
+             role="button">
+          <div class="position-relative overflow-hidden trabajo-media-wrap">
             <img [src]="mant.imagen" 
-                 class="card-img-top" 
+                 class="card-img-top trabajo-img" 
                  [alt]="mant.titulo"
                  loading="lazy"
                  onError="this.src='img/proximamente.png'">
+            <div class="trabajo-overlay">
+              <p class="fw-bold fs-5 text-white mb-0">Click para ver</p>
+            </div>
             <div class="position-absolute top-0 start-0 m-3">
-              <span class="badge bg-{{ mant.color }} fs-4 p-2">
-                {{ mant.icono }}
+              <span class="badge bg-{{ mant.color }} fs-5 fw-bold" style="padding: 12px 15px;">
+                {{ getMediaCount(mant.items) }}
               </span>
             </div>
           </div>
           <div class="card-body text-center">
-            <div class="mb-3">
-              <span class="display-4">{{ mant.icono }}</span>
-            </div>
             <h5 class="card-title fw-bold text-{{ mant.color }}">{{ mant.titulo }}</h5>
             <p class="card-text text-muted mb-3">{{ mant.descripcion }}</p>
             <button type="button" 
-                    class="btn btn-{{ mant.color }} w-100" 
-                    data-bs-toggle="modal" 
-                    [attr.data-bs-target]="'#modal' + mant.id">
+                    class="btn btn-{{ mant.color }} w-100">
               <span class="me-2">🔍</span> Ver Detalles
             </button>
           </div>
@@ -139,29 +141,30 @@
     <div class="row g-4">
       
       <div *ngFor="let diseno of disenoProgra" class="col-md-4">
-        <div class="card h-100 shadow-sm position-relative overflow-hidden">
-          <div class="position-relative">
+        <div class="card h-100 shadow-sm position-relative overflow-hidden trabajo-card"
+             data-bs-toggle="modal"
+             [attr.data-bs-target]="'#modal' + diseno.id"
+             role="button">
+          <div class="position-relative overflow-hidden trabajo-media-wrap">
             <img [src]="diseno.imagen" 
-                 class="card-img-top" 
+                 class="card-img-top trabajo-img" 
                  [alt]="diseno.titulo"
                  loading="lazy"
                  onError="this.src='img/proximamente.png'">
+            <div class="trabajo-overlay">
+              <p class="fw-bold fs-5 text-white mb-0">Click para ver</p>
+            </div>
             <div class="position-absolute top-0 start-0 m-3">
-              <span class="badge bg-{{ diseno.color }} fs-4 p-2">
-                {{ diseno.icono }}
+              <span class="badge bg-{{ diseno.color }} fs-5 fw-bold" style="padding: 12px 15px;">
+                {{ getMediaCount(diseno.items) }}
               </span>
             </div>
           </div>
           <div class="card-body text-center">
-            <div class="mb-3">
-              <span class="display-4">{{ diseno.icono }}</span>
-            </div>
             <h5 class="card-title fw-bold text-{{ diseno.color }}">{{ diseno.titulo }}</h5>
             <p class="card-text text-muted mb-3">{{ diseno.descripcion }}</p>
             <button type="button" 
-                    class="btn btn-{{ diseno.color }} w-100" 
-                    data-bs-toggle="modal" 
-                    [attr.data-bs-target]="'#modal' + diseno.id">
+                    class="btn btn-{{ diseno.color }} w-100">
               <span class="me-2">🔍</span> Ver Detalles
             </button>
           </div>
