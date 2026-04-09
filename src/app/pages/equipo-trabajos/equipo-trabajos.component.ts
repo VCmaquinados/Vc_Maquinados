@@ -155,9 +155,8 @@ export class EquipoTrabajosComponent implements OnInit, OnDestroy {
       imagen: 'img/piezas/pavonado/p1.jpg',
       items: [
         { tipo: 'imagen', src: 'img/piezas/pavonado/p1.jpg', alt: 'Pavonado 1' },
-        { tipo: 'imagen', src: 'img/piezas/pavonado/p2.jpg', alt: 'Pavonado 2' },
-        { tipo: 'imagen', src: 'img/piezas/pavonado/p3.jpeg', alt: 'Pavonado 3' },
-        { tipo: 'imagen', src: 'img/piezas/pavonado/p4.jpeg', alt: 'Pavonado 4' }
+        { tipo: 'imagen', src: 'img/piezas/pavonado/p2.jpg', alt: 'Pavonado 2' }
+
       ]
     },
     {

@@ -181,8 +181,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         { tipo: 'video' as const, src: 'img/videos/cnc/botella_Maq.mp4' },
         { tipo: 'video' as const, src: 'img/videos/cnc/maquinado_R.mp4' },
         { tipo: 'video' as const, src: 'img/videos/cnc/matriz.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/cnc/tornillos.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/cnc/video2.mp4' }
+        { tipo: 'video' as const, src: 'img/videos/cnc/tornillos.mp4' }
 
       ]
     },
@@ -198,8 +197,7 @@ export class HomeComponent implements OnInit, OnDestroy {
         { tipo: 'video' as const, src: 'img/videos/resultados/botella_R2.mp4' },
         { tipo: 'video' as const, src: 'img/videos/resultados/clavos_R.mp4' },
         { tipo: 'video' as const, src: 'img/videos/resultados/clavos_RP.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/resultados/res1.mp4' },
-        { tipo: 'video' as const, src: 'img/videos/resultados/res3.mp4' }
+        { tipo: 'video' as const, src: 'img/videos/resultados/res1.mp4' }
       ]
     },
     {
